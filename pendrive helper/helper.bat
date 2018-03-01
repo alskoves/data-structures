@@ -23,3 +23,6 @@ DEL "%unit%:\SystemValueInformation"
 ECHO.Seus arquivos devem aparecer novamente. Obrigado por utilizar.
 PAUSE
 EXIT
+
+::ver https://stackoverflow.com/questions/11004045/batch-file-counting-number-of-files-in-folder-and-storing-in-a-variable
+::ver https://stackoverflow.com/questions/18658509/how-to-get-attributes-of-a-file-using-batch-file
