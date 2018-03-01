@@ -1,3 +1,5 @@
+//Versão alternativa do arquivo .bat
+
 #include<stdio.h>
 #include<string.h>
 
