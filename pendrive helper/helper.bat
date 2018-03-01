@@ -10,6 +10,6 @@ ATTRIB %unit%:\*.* /d /s +a -h -r -s
 DEL "%unit%:\iso.vbs"
 DEL "%unit%:\SystemValueInformation"
 
-ECHO."Seus arquivos devem aparecer novamente. Obrigado por utilizar.
+ECHO.Seus arquivos devem aparecer novamente. Obrigado por utilizar.
 
 EXIT
