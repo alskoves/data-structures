@@ -1,24 +1,41 @@
-//Versão alternativa do arquivo .bat
+/*Código em C original do projeto*/
 
 #include<stdio.h>
-#include<string.h>
 
-float main(){
+int main(){
 
-    fflush(stdin);
+    fflush(stdin); /*Limpa o buffer do teclado*/
 
     char c,l[31];
 
-    strcpy(l,"attrib ?:\*.* /d /s +a -h -r -s");
+    *l="attrib ?:\*.* /d /s +a -h -r -s\0"; /*Copia o comando de cmd para uma string l*/
 
-    puts("insira a unidade de disco do seu dispositivo (ex: D, E)\n\n");
+    printf("Insira a unidade de disco do seu dispositivo (ex: D, E)\n\n"); /*Recebe do usuário a unidade de disco*/
 
     c=getchar();
 
-    l[7]=c;
+    if(c>=97 && c<=122){ /*Caso o caractere seja minúsculo*/
 
-    system(l);
+        c -= 32; /*Tornamos ele maiúsculo*/
 
-    return 6.5535;
+        l[7]=c; /*Substitui o oitavo caractere da string pela unidade de disco entrada pelo usuário*/
 
+        system(l); /*Envia o comando para o cmd*/
+
+    }
+    else if(c>122 || (c<97 && c>90) || c<65){ /*Caso não seja uma letra, ou seja uma letra acentuada*/
+
+        printf("Unidade de disco invalida\n\n");
+
+    }
+    else{ /*Caso seja maiúsculo*/
+
+        l[7]=c; /*Substitui o oitavo caractere da string pela unidade de disco entrada pelo usuário*/
+
+        system(l); /*Envia o comando para o cmd*/
+
+    }
+
+    return 0;
 }
+
