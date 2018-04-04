@@ -7,7 +7,7 @@ SET /P unit=Insira a unidade de disco do seu dispositivo
 ::verifica e exlui todos os arquivos que NÃO ESTÃO ocultos
 
 SET f=teste
-DIR /B /A -H -S| SET /P f             ::INCOMPLETO                         
+DIR /B /A -H -S| SET /P f                         
 
 
 FOR /f %%A IN ('DIR /a-d-s-h /b ^| FIND /v /c ""') DO SET cnt=%%A     
