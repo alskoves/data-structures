@@ -14,7 +14,7 @@ int main(){
 
     c=getchar();
 
-    if(c>=97 && c<=122){ /*Caso o caractere seja minúsculo*/
+    if(c>='a' && c<='z'){ /*Caso o caractere seja minúsculo*/
 
         c -= 32; /*Tornamos ele maiúsculo*/
 
@@ -23,7 +23,7 @@ int main(){
         system(l); /*Envia o comando para o cmd*/
 
     }
-    else if(c>122 || (c<97 && c>90) || c<65){ /*Caso não seja uma letra, ou seja uma letra acentuada*/
+    else if(c>'z' || (c<'a' && c>'Z') || c<'A'){ /*Caso não seja uma letra, ou seja uma letra acentuada*/
 
         printf("Unidade de disco invalida\n\n");
 
