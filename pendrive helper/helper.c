@@ -1,4 +1,4 @@
-/*Código em C original do projeto*/
+/*Famigerado Desocultatron 3000*/
 
 #include<stdio.h>
 
