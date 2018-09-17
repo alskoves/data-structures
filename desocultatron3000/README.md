@@ -4,4 +4,4 @@ How to use this program:
 * For example, the common letters used in most Windows systems will be E and F (E:\ or F:\ disks). Write that letter on the prompt.
 * Your files should appear again. Delete the shortcuts and use your device again.
 
-Special thanks to @Beoww and @fingerson for this description
+Thanks to Beoww and fingerson for this description
