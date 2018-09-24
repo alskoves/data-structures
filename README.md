@@ -1,1 +1,1 @@
-Some projects
+Projects independent (somewhat) of college
