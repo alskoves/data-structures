@@ -9,7 +9,7 @@
 template <class NTYPE>
 class Node{
 
-private:
+protected:
 
     NTYPE data;   //Dado a ser armazenado
     Node<NTYPE>* ante; //Ponteiro para o anterior da lista
@@ -58,7 +58,7 @@ namespace ListaDupla{///Classe e Funções-Método de Listas Duplas
 template <class NTYPE>
 class DList{
 
-private:
+protected:
 
     Node<NTYPE>* top;   //Topo da lista
     Node<NTYPE>* here;  //Posição atual da lista
@@ -216,7 +216,7 @@ namespace ListaSimples{///Classe e Funções-método de Listas Simples
 template <class NTYPE>
 class SList{
 
-private:
+protected:
 
     Node<NTYPE>* top; //Topo da lista
     Node<NTYPE>* here;//Elemento atual da lista
