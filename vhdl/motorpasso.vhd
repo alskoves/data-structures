@@ -1,10 +1,14 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+
 entity motorpasso is
-	port	(	direcao, enable, clock, reset : 	in bit;
-				motor :								  out bit_vector(3 downto 0));
+	port(
+		direcao, enable, clock, reset : in bit;
+		motor :	out bit_vector(3 downto 0)
+	);
 end motorpasso;
+	
 architecture giroflex of motorpasso is
 	type passo is (ZERO, UM, DOIS, TRES, QUATRO, CINCO, SEIS, SETE);
 	signal proest, atuest: passo;
