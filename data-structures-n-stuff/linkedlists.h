@@ -6,19 +6,19 @@
 
 /******************************************************************************/
 
-template <class NTYPE>
+template <class T1>
 class LISTA{
 
 private:
 
-    template <class NTYPE2>
+    template <class T2>
     class Node{
 
     protected:
 
-        NTYPE data;   //Dado a ser armazenado
-        Node<NTYPE>* ante; //Ponteiro para o anterior da lista
-        Node<NTYPE>* prox; //Ponteiro para o próximo da lista
+        T2 data;   //Dado a ser armazenado
+        Node<T2>* ante; //Ponteiro para o anterior da lista
+        Node<T2>* prox; //Ponteiro para o próximo da lista
 
     public:
 
@@ -32,24 +32,24 @@ private:
           prox = NULL;
         }
 
-        void setDataValue(const NTYPE a){  //Recebe o dado
+        void setDataValue(const T2 a){  //Recebe o dado
             data = a;
         }
-        NTYPE getDataValue(){        //Retorna o dado
+        T2 getDataValue(){        //Retorna o dado
             return data;
         }
 
-        void setAnteLista(Node<NTYPE>* no){//Define o elemento anterior da lista
+        void setAnteLista(Node<T2>* no){//Define o elemento anterior da lista
             ante = no;
         }
-        Node<NTYPE>* getAnteLista(){       //Retorna o ponteiro para o anterior da lista
+        Node<T2>* getAnteLista(){       //Retorna o ponteiro para o anterior da lista
             return ante;
         }
 
-        void setProxLista(Node<NTYPE>* no){//Define o próximo elemento da lista
+        void setProxLista(Node<T2>* no){//Define o próximo elemento da lista
             prox = no;
         }
-        Node<NTYPE>* getProxLista(){       //Retorna o ponteiro para o próximo da lista
+        Node<T2>* getProxLista(){       //Retorna o ponteiro para o próximo da lista
             return prox;
         }
 
@@ -57,26 +57,76 @@ private:
 
 protected:
 
-    Node<NTYPE>* top;   //Topo da lista
-    Node<NTYPE>* here;  //Posição atual da lista
-    Node<NTYPE>* bottom;//Fundo da lista
+    Node<T1>* top;   //Topo da lista
+    Node<T1>* here;  //Posição atual da lista
+    Node<T1>* bottom;//Fundo da lista
 
 public:
 
-    DList(){    //Construtora
+    LISTA(){    //Construtora
         top = NULL;
         here = NULL;
         bottom = NULL;
     }
-    ~DList(){   //Destrutora
+    ~LISTA(){   //Destrutora
         mataLista();
         top = NULL;
         here = NULL;
         bottom = NULL;
     }
 
-    void colaNoComeco(NTYPE a);
-    void colaNoFinal (NTYPE a);
+    void colaNoComeco(T1 a){
+
+        Node<T1>* no = (Node<T1>*) malloc(sizeof(Node<T1>));  //Cria um nó novo
+
+        if(top == NULL && bottom == NULL){    //Se a lista estiver vazia
+
+            no->setProxLista(NULL);//Como só tem ele, não aponta para frente
+            no->setAnteLista(NULL);//Nem para trás
+            no->setDataValue(a);   //Recebe o dado
+            top = no;              //O novo nó se torna o topo da lista
+            bottom = no;           //O novo nó também se torna o fundo da lista
+
+        }
+        else{
+
+            here = top;             //Atual recebe o topo da lista
+            no->setProxLista(here); //O antigo topo se torna o próximo do novo topo
+            no->setAnteLista(NULL); //Como é o topo, anterior aponta para NULL
+            no->setDataValue(a);    //Recebe o dado
+            here->setAnteLista(no); //Antigo topo aponta para trás para o novo topo
+            top = no;               //Substitui o topo da lista pelo nó novo
+            here = NULL;            //Aterra o atual
+
+        }
+
+    }
+    void colaNoFinal (T1 a){
+
+        Node<NTYPE>* no = (Node<NTYPE>*) malloc(sizeof(Node<NTYPE>));  //Cria um nó novo
+
+        if(top == NULL && bottom == NULL){     //Se a lista estiver vazia
+
+            no->setProxLista(NULL);//Como só tem ele, não aponta para frente
+            no->setAnteLista(NULL);//Nem para trás
+            no->setDataValue(a);   //Recebe o dado
+            top = no;              //O novo nó se torna o topo da lista
+            bottom = no;           //O novo nó também se torna o fundo da lista
+
+        }
+        else{
+
+            here = bottom;         //Atual recebe o fundo da lista
+            no->setAnteLista(here);//O antigo fundo se torna o anterior do nó novo
+            no->setProxLista(NULL);//Como é o fundo, próximo aponta para NULL
+            no->setDataValue(a);   //Recebe o dado
+            here->setProxLista(no);//Antigo fundo aponta para frente para o novo fundo
+            bottom = no;           //Substitui o fundo da lista pelo nó novo
+            here = NULL;           //Aterra o atual
+
+        }
+
+    }
     int tiraDoComeco ();
     int tiraDoFinal ();
 
@@ -85,61 +135,6 @@ public:
 
 };
 
-template <class NTYPE>
-void DList<NTYPE>::colaNoComeco(NTYPE a){
-
-    Node<NTYPE>* no = (Node<NTYPE>*) malloc(sizeof(Node<NTYPE>));  //Cria um nó novo
-
-    if(top == NULL && bottom == NULL){    //Se a lista estiver vazia
-
-        no->setProxLista(NULL);//Como só tem ele, não aponta para frente
-        no->setAnteLista(NULL);//Nem para trás
-        no->setDataValue(a);   //Recebe o dado
-        top = no;              //O novo nó se torna o topo da lista
-        bottom = no;           //O novo nó também se torna o fundo da lista
-
-    }
-    else{
-
-        here = top;             //Atual recebe o topo da lista
-        no->setProxLista(here); //O antigo topo se torna o próximo do novo topo
-        no->setAnteLista(NULL); //Como é o topo, anterior aponta para NULL
-        no->setDataValue(a);    //Recebe o dado
-        here->setAnteLista(no); //Antigo topo aponta para trás para o novo topo
-        top = no;               //Substitui o topo da lista pelo nó novo
-        here = NULL;            //Aterra o atual
-
-    }
-
-}
-
-template <class NTYPE>
-void DList<NTYPE>::colaNoFinal (NTYPE a){
-
-    Node<NTYPE>* no = (Node<NTYPE>*) malloc(sizeof(Node<NTYPE>));  //Cria um nó novo
-
-    if(top == NULL && bottom == NULL){     //Se a lista estiver vazia
-
-        no->setProxLista(NULL);//Como só tem ele, não aponta para frente
-        no->setAnteLista(NULL);//Nem para trás
-        no->setDataValue(a);   //Recebe o dado
-        top = no;              //O novo nó se torna o topo da lista
-        bottom = no;           //O novo nó também se torna o fundo da lista
-
-    }
-    else{
-
-        here = bottom;         //Atual recebe o fundo da lista
-        no->setAnteLista(here);//O antigo fundo se torna o anterior do nó novo
-        no->setProxLista(NULL);//Como é o fundo, próximo aponta para NULL
-        no->setDataValue(a);   //Recebe o dado
-        here->setProxLista(no);//Antigo fundo aponta para frente para o novo fundo
-        bottom = no;           //Substitui o fundo da lista pelo nó novo
-        here = NULL;           //Aterra o atual
-
-    }
-
-}
 
 template <class NTYPE>
 int DList<NTYPE>::tiraDoComeco(){ //Retorna 1 se a lista estiver vazia
