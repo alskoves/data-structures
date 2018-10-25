@@ -1,5 +1,5 @@
 #pragma once
-//Listas simples e duplas
+//Listas duplas
 
 #include<stdlib.h>
 #include<stdio.h>
@@ -7,54 +7,53 @@
 /******************************************************************************/
 
 template <class NTYPE>
-class Node{
+class LISTA{
 
-protected:
+private:
 
-    NTYPE data;   //Dado a ser armazenado
-    Node<NTYPE>* ante; //Ponteiro para o anterior da lista
-    Node<NTYPE>* prox; //Ponteiro para o próximo da lista
+    template <class NTYPE2>
+    class Node{
 
-public:
+    protected:
 
-    Node(){     //Construtora
-        data = 0;
-        ante = NULL;
-        prox = NULL;
-    }
-    ~Node(){    //Destrutora
-      ante = NULL;
-      prox = NULL;
-    }
+        NTYPE data;   //Dado a ser armazenado
+        Node<NTYPE>* ante; //Ponteiro para o anterior da lista
+        Node<NTYPE>* prox; //Ponteiro para o próximo da lista
 
-    void setDataValue(const NTYPE a){  //Recebe o dado
-        data = a;
-    }
-    NTYPE getDataValue(){        //Retorna o dado
-        return data;
-    }
+    public:
 
-    void setAnteLista(Node<NTYPE>* no){//Define o elemento anterior da lista
-        ante = no;
-    }
-    Node<NTYPE>* getAnteLista(){       //Retorna o ponteiro para o anterior da lista
-        return ante;
-    }
+        Node(){     //Construtora
+            data = 0;
+            ante = NULL;
+            prox = NULL;
+        }
+        ~Node(){    //Destrutora
+          ante = NULL;
+          prox = NULL;
+        }
 
-    void setProxLista(Node<NTYPE>* no){//Define o próximo elemento da lista
-        prox = no;
-    }
-    Node<NTYPE>* getProxLista(){       //Retorna o ponteiro para o próximo da lista
-        return prox;
-    }
+        void setDataValue(const NTYPE a){  //Recebe o dado
+            data = a;
+        }
+        NTYPE getDataValue(){        //Retorna o dado
+            return data;
+        }
 
-};
+        void setAnteLista(Node<NTYPE>* no){//Define o elemento anterior da lista
+            ante = no;
+        }
+        Node<NTYPE>* getAnteLista(){       //Retorna o ponteiro para o anterior da lista
+            return ante;
+        }
 
-/******************************************************************************/
-/******************************************************************************/
+        void setProxLista(Node<NTYPE>* no){//Define o próximo elemento da lista
+            prox = no;
+        }
+        Node<NTYPE>* getProxLista(){       //Retorna o ponteiro para o próximo da lista
+            return prox;
+        }
 
-template <class NTYPE>
-class DList{
+    };
 
 protected:
 
@@ -85,37 +84,3 @@ public:
     void mataLista();
 
 };
-
-/******************************************************************************/
-/******************************************************************************/
-
-template <class NTYPE>
-class SList{
-
-protected:
-
-    Node<NTYPE>* top; //Topo da lista
-    Node<NTYPE>* here;//Elemento atual da lista
-
-public:
-
-    SList(){    //Construtora
-        top = NULL;
-        here = NULL;
-    }
-    ~SList(){   //Destrutora
-        mataLista();
-        top = NULL;
-        here = NULL;
-    }
-
-    void colaNoComeco(NTYPE a);
-    void colaNoFinal (NTYPE a);
-    int tiraDoComeco();
-    int tiraDoFinal ();
-
-    int imprimeLista();
-    void mataLista();
-};
-
-/*****************************************************************************/
