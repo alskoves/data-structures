@@ -103,7 +103,7 @@ public:
     }
     void colaNoFinal (T1 a){
 
-        Node<NTYPE>* no = (Node<NTYPE>*) malloc(sizeof(Node<NTYPE>));  //Cria um nó novo
+        Node<T1>* no = (Node<T1>*) malloc(sizeof(Node<T1>));  //Cria um nó novo
 
         if(top == NULL && bottom == NULL){     //Se a lista estiver vazia
 
