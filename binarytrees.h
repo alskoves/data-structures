@@ -1,5 +1,7 @@
 #pragma once
 
+#include"linkedlists.h"
+
 template <class T>
 class Arvore{
 
@@ -67,6 +69,7 @@ private:
     }
     
     No* raiz;
+    LISTA<No> listanos;
     
 public:
 
