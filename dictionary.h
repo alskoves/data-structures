@@ -1,4 +1,5 @@
 #pragma once
+//dicionário ou mapa ou vetor associativo
 
 template <class D, class K>
 class Dictionary{
