@@ -5,52 +5,47 @@ template <class D, class K>
 class Dictionary{
 
     private:
-
-        template <class K2>
-        class Key{
-
-            private:
-
-                K2 _chave;
-
-            public:
-
-                Key(){}
-                ~Key(){}
-
-                void setKey(K2 c){
-                    _chave = c;
-                }
-                K2 getKey(){
-                    return _chave;
-                }
-
-                void operator = (K2 c){
-                    setKey(c);
-                }
-                void operator = (Key k){
-                    setKey(k.getKey());
-                }
-
-        };
-
-        template <class E>
+    
+        template <class D2, class K2>
         class Entry{
-
+          
             private:
-
-                E* _data;
-                long _key;
-
+                
+                D2* _data;
+                K2 _chave;
+            
             public:
-
-                Entry(){
-
-                    _data = NULL;
-                    _key = 0;
-
+            
+                Entry(D2 data, K2 chave){
+                    
+                    _data = &data;
+                    _chave = chave;
+                    
                 }
-
+                Entry(){
+                    
+                    _data = NULL;
+                    _chave = 0;
+                    
+                }
+                ~Entry(){
+                    
+                    _data = NULL;
+                    _chave = 0;
+                    
+                }
+            
+                void resetData(D2 data){
+                    
+                    _data = &data;
+                    
+                }
+                void resetKey(K2 chave){
+                    
+                    _chave = chave;
+                    
+                }
+            
         };
 
 };
