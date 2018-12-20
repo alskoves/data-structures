@@ -15,25 +15,27 @@ private:
 
     protected:
 
-        T2 data;   //Dado a ser armazenado
+        T2* data;   //Dado a ser armazenado
         Node<T2>* ante; //Ponteiro para o anterior da lista
         Node<T2>* prox; //Ponteiro para o próximo da lista
 
     public:
 
         Node(){     //Construtora
+            data = NULL;
             ante = NULL;
             prox = NULL;
         }
         ~Node(){    //Destrutora
+            data = NULL;
             ante = NULL;
             prox = NULL;
         }
 
-        void setDataValue(const T2 a){  //Recebe o dado
+        void setDataValue(const T2* a){  //Recebe o dado
             data = a;
         }
-        T2 getDataValue(){        //Retorna o dado
+        T2* getDataValue(){        //Retorna o dado
             return data;
         }
 
@@ -73,7 +75,7 @@ public:
         bottom = NULL;
     }
 
-    void colaNoComeco(T1 a){
+    void colaNoComeco(T1* a){
 
         Node<T1>* no = (Node<T1>*) malloc(sizeof(Node<T1>));  //Cria um nó novo
 
@@ -100,7 +102,7 @@ public:
         }
 
     }
-    void colaNoFinal (T1 a){
+    void colaNoFinal (T1* a){
 
         Node<T1>* no = (Node<T1>*) malloc(sizeof(Node<T1>));  //Cria um nó novo
 
@@ -167,11 +169,13 @@ public:
     int operator ++ (){
     
         if(here == bottom){
-            return 1;
+            return 0;
         }
+        else if(top == NULL){
+            return 0;
         else{
             here = here->getProxLista();
-            return 0;
+            return 1;
         }
     
     }
@@ -179,11 +183,14 @@ public:
     int operator -- (){
     
         if(here == top){
-            return 1;
+            return 0;
+        }
+        else if(top == NULL){
+            return 0;
         }
         else{
             here = here->getAnteLista();
-            return 0;
+            return 1;
         }
         
     }
@@ -200,7 +207,7 @@ public:
         
     }
     
-    T1 getWhatIsHere(){
+    T1* getWhatIsHere(){
     
         return here->getData();
         
