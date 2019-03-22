@@ -1,8 +1,6 @@
 #pragma once
 //Listas duplas
 
-#include<stdlib.h>
-
 /******************************************************************************/
 
 template <class T1>
@@ -77,7 +75,7 @@ public:
 
     void colaNoComeco(T1* a){
 
-        Node<T1>* no = (Node<T1>*) malloc(sizeof(Node<T1>));  //Cria um nó novo
+        Node<T1>* no = new no;  //Cria um nó novo
 
         if(top == NULL && bottom == NULL){    //Se a lista estiver vazia
 
@@ -104,7 +102,7 @@ public:
     }
     void colaNoFinal (T1* a){
 
-        Node<T1>* no = (Node<T1>*) malloc(sizeof(Node<T1>));  //Cria um nó novo
+        Node<T1>* no = new no;  //Cria um nó novo
 
         if(top == NULL && bottom == NULL){     //Se a lista estiver vazia
 
@@ -229,7 +227,7 @@ public:
         here = top->getProxLista();     //Define o atual como o segundo elemento
         while(here != NULL){            //Enquanto não estiver no final da lista
 
-            free(top);                  //Libera o topo
+            delete top;                  //Libera o topo
             top = here;                 //Desloca o topo uma posição para frente
             here = top->getProxLista(); //Desloca o atual uma posição para frente
 
