@@ -7,6 +7,7 @@ class Arvore{
 protected:
 
     T data;
+    int altura;
     Arvore<T>* esq;
     Arvore<T>* dir;
     
