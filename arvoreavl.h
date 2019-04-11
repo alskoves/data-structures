@@ -35,3 +35,23 @@ Arvore* Atualizar_fb_esq(Arovre* a){
   return a;
 
 }
+
+Arvore* Atualizar_fb_dir(Arovre* a){
+
+  a-> altura = Atualizar(a);
+  if(Balanceamento(a)==-2){
+  
+    if(Balanceamento(a->dir) >= 0){
+    
+        a = Rotacao_simples_esq(a);
+    
+    }
+    else{
+    
+        a = Rotacao_dupla_esq(a);
+    }
+  
+  }
+  return a;
+
+}
