@@ -90,3 +90,28 @@ Arvore* Rotacao_simples_esq(Arvore* a){
     return t;
         
 }
+
+Arvore* Rotacao_simples_dir(Arvore* a){
+        
+    No* t = a->esq;
+    a->esq = t->dir;
+    t->dir = a;
+    a->altura = Atualizar(a);
+    t->altura = Atualizar(t);
+    return t;
+        
+}
+
+Arvore* Rotacao_dupla_esq(Arvore* a){
+    
+    a->dir = Rotacao_simples_dir(a->dir);
+    return Rotacao_simples_esq(a);
+    
+}
+
+Arvore* Rotacao_dupla_dir(Arvore* a){
+    
+    a->esq = Rotacao_simples_esq(a->esq);
+    return Rotacao_simples_dir(a);
+    
+}
